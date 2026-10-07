@@ -1,0 +1,614 @@
+/*
+ * Accordion Image Panels
+ * Values extracted from the source (.gnppersianasaccordion on gnp.com.mx).
+ * Mobile: panels stacked, detail opens under its teaser.
+ * Desktop (>= 900px): panels side by side; the open panel grows to 80% and
+ * shows its detail next to the teaser, the others collapse to narrow strips.
+ */
+
+.accordion-image-panels {
+  --aip-panel-height: 450px;
+  --aip-box-bg: rgb(255 255 255 / 70%);
+  --aip-collapsed-bg: rgb(255 255 255 / 60%);
+  --aip-divider: #d4e1f7;
+  --aip-shadow-color: #ecf1f8;
+
+  color: var(--text-color);
+}
+
+/* panel items are navy in the source (block root is body gray) */
+.accordion-image-panels .accordion-image-panels-list {
+  display: flex;
+  flex-direction: column;
+  color: var(--brand-navy);
+}
+
+/* ---------- teaser ---------- */
+
+.accordion-image-panels .accordion-image-panels-teaser {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 217px;
+  overflow: hidden;
+}
+
+.accordion-image-panels .accordion-image-panels-item.has-detail .accordion-image-panels-teaser {
+  cursor: pointer;
+}
+
+/* background image fills the panel */
+.accordion-image-panels .accordion-image-panels-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.accordion-image-panels .accordion-image-panels-bg picture,
+.accordion-image-panels .accordion-image-panels-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.accordion-image-panels .accordion-image-panels-bg img {
+  object-fit: cover;
+  object-position: 50% 35%;
+}
+
+/* teaser text: title at top, box pinned to bottom; clicks fall through to the toggle */
+.accordion-image-panels .accordion-image-panels-teaser-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  pointer-events: none;
+}
+
+.accordion-image-panels .accordion-image-panels-teaser-content a {
+  pointer-events: auto;
+}
+
+.accordion-image-panels .accordion-image-panels-head {
+  padding: 8px 0 0;
+}
+
+.accordion-image-panels .accordion-image-panels-head > *,
+.accordion-image-panels .accordion-image-panels-box > * {
+  margin: 0;
+}
+
+.accordion-image-panels .accordion-image-panels-head .accordion-image-panels-title {
+  margin: 0;
+  color: var(--brand-navy);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28.8px;
+  text-transform: uppercase;
+}
+
+.accordion-image-panels .accordion-image-panels-title picture,
+.accordion-image-panels .accordion-image-panels-title img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+.accordion-image-panels .accordion-image-panels-head > p {
+  margin-top: 8px;
+}
+
+.accordion-image-panels .accordion-image-panels-box {
+  margin-top: auto;
+  padding: 16px 0;
+  background-color: var(--aip-box-bg);
+}
+
+.accordion-image-panels .accordion-image-panels-box h3 {
+  color: var(--brand-navy);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 25.6px;
+}
+
+.accordion-image-panels .accordion-image-panels-box > p {
+  font-size: 14px;
+  line-height: 16.8px;
+}
+
+/* source hides subtitle and lead text on small screens */
+.accordion-image-panels .accordion-image-panels-box > h3,
+.accordion-image-panels .accordion-image-panels-box > p:not(:has(a)) {
+  display: none;
+}
+
+/* teaser CTAs: navy in the box, orange under the title */
+.accordion-image-panels .accordion-image-panels-teaser-content p > a:any-link {
+  display: inline-block;
+  border: 1px solid var(--brand-navy);
+  border-radius: var(--button-radius);
+  padding: 8px;
+  background-color: var(--brand-navy);
+  color: var(--background-color);
+  font-size: var(--button-font-size);
+  font-weight: 400;
+  letter-spacing: var(--button-letter-spacing);
+  line-height: 12px;
+  text-decoration: none;
+  transition: var(--button-transition);
+}
+
+.accordion-image-panels .accordion-image-panels-teaser-content p > a:any-link:hover,
+.accordion-image-panels .accordion-image-panels-teaser-content p > a:any-link:focus-visible {
+  border-color: var(--brand-navy-hover);
+  background-color: var(--brand-navy-hover);
+  color: var(--brand-navy-hover-text);
+  text-decoration: none;
+}
+
+.accordion-image-panels .accordion-image-panels-head p > a:any-link {
+  border-color: var(--brand-orange);
+  background-color: var(--brand-orange);
+  color: var(--background-color);
+}
+
+.accordion-image-panels .accordion-image-panels-head p > a:any-link:hover,
+.accordion-image-panels .accordion-image-panels-head p > a:any-link:focus-visible {
+  border-color: var(--brand-orange-hover);
+  background-color: var(--brand-orange-hover);
+  color: var(--background-color);
+}
+
+/* expand toggle: covers the teaser so the whole panel is the click target */
+.accordion-image-panels .accordion-image-panels-toggle {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--brand-orange);
+  cursor: pointer;
+}
+
+.accordion-image-panels .accordion-image-panels-toggle:focus-visible {
+  outline: 2px solid var(--brand-navy-hover);
+  outline-offset: -2px;
+}
+
+/* chevron indicator (mobile only) */
+.accordion-image-panels .accordion-image-panels-toggle::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  bottom: 24px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid currentcolor;
+  border-width: 2px 2px 0 0;
+  transform: rotate(135deg);
+  transition: transform 0.2s;
+}
+
+.accordion-image-panels .accordion-image-panels-item.is-open .accordion-image-panels-toggle::after {
+  transform: rotate(-45deg);
+}
+
+/* ---------- detail region ---------- */
+
+.accordion-image-panels .accordion-image-panels-detail {
+  padding: 8px 16px 8px 8px;
+  background-color: var(--background-color);
+  color: var(--brand-navy);
+}
+
+.accordion-image-panels .accordion-image-panels-detail[hidden] {
+  display: none;
+}
+
+.accordion-image-panels .accordion-image-panels-detail:not([hidden]) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+}
+
+.accordion-image-panels .accordion-image-panels-intro {
+  max-width: 430px;
+  margin-bottom: 6px;
+}
+
+.accordion-image-panels .accordion-image-panels-intro > * {
+  margin: 0;
+}
+
+.accordion-image-panels .accordion-image-panels-intro h2 {
+  color: var(--brand-navy);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 25.6px;
+}
+
+.accordion-image-panels .accordion-image-panels-intro p {
+  margin: 16px 0 10px;
+  font-size: 12px;
+  line-height: 19.2px;
+}
+
+.accordion-image-panels .accordion-image-panels-body {
+  margin-bottom: 6px;
+}
+
+.accordion-image-panels .accordion-image-panels-group > * {
+  margin: 0;
+}
+
+.accordion-image-panels .accordion-image-panels-group {
+  padding-bottom: 6px;
+}
+
+.accordion-image-panels .accordion-image-panels-group h3 {
+  color: var(--brand-navy);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22.4px;
+}
+
+.accordion-image-panels .accordion-image-panels-detail ul {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  line-height: 19.2px;
+}
+
+.accordion-image-panels .accordion-image-panels-link-item {
+  position: relative;
+}
+
+.accordion-image-panels .accordion-image-panels-link-item > a:any-link {
+  position: relative;
+  display: block;
+  padding: 2px 32px 2px 0;
+  color: var(--brand-orange);
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.accordion-image-panels .accordion-image-panels-link-item > a:any-link:hover {
+  color: var(--brand-orange);
+  text-decoration: underline;
+}
+
+/* arrow icon (keyboard_arrow_right) */
+.accordion-image-panels .accordion-image-panels-link-item > a::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 9px;
+  width: 7px;
+  height: 7px;
+  border: solid currentcolor;
+  border-width: 2px 2px 0 0;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* description shown as tooltip on hover / keyboard focus */
+.accordion-image-panels .accordion-image-panels-link-desc {
+  position: absolute;
+  bottom: calc(100% - 10px);
+  left: 120px;
+  z-index: 3;
+  box-sizing: border-box;
+  width: 208px;
+  max-width: calc(100% - 16px);
+  padding: 2px 16px;
+  border-radius: var(--button-radius);
+  background-color: var(--brand-navy);
+  color: var(--background-color);
+  font-size: 12px;
+  line-height: 19.2px;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.accordion-image-panels .accordion-image-panels-link-item:hover .accordion-image-panels-link-desc,
+.accordion-image-panels .accordion-image-panels-link-item:focus-within .accordion-image-panels-link-desc {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* orange CTA buttons inside the detail (group CTA + footer CTA) */
+.accordion-image-panels .accordion-image-panels-group > p,
+.accordion-image-panels .accordion-image-panels-footer > p {
+  margin: 0;
+}
+
+.accordion-image-panels .accordion-image-panels-group > p {
+  margin: 6px 0;
+}
+
+.accordion-image-panels .accordion-image-panels-group > p > a:any-link,
+.accordion-image-panels .accordion-image-panels-footer a:any-link {
+  display: inline-block;
+  border: 1px solid var(--brand-orange);
+  border-radius: var(--button-radius);
+  padding: 6px 8px;
+  background-color: var(--brand-orange);
+  color: var(--background-color);
+  font-size: var(--button-font-size);
+  font-weight: 400;
+  letter-spacing: var(--button-letter-spacing);
+  line-height: 18px;
+  text-decoration: none;
+  transition: var(--button-transition);
+}
+
+.accordion-image-panels .accordion-image-panels-group > p > a:any-link:hover,
+.accordion-image-panels .accordion-image-panels-group > p > a:any-link:focus-visible,
+.accordion-image-panels .accordion-image-panels-footer a:any-link:hover,
+.accordion-image-panels .accordion-image-panels-footer a:any-link:focus-visible {
+  border-color: var(--brand-orange-hover);
+  background-color: var(--brand-orange-hover);
+  color: var(--background-color);
+  text-decoration: none;
+}
+
+/* gallery: one image at a time, swipe/scroll or use the arrows/dots */
+.accordion-image-panels .accordion-image-panels-gallery {
+  position: relative;
+  justify-self: center;
+  align-self: start;
+  width: 368px;
+  max-width: 100%;
+  margin-bottom: 6px;
+  overflow: hidden;
+  box-shadow:
+    var(--aip-shadow-color) 0 2px 4px 0,
+    var(--aip-shadow-color) 0 3px 4px 0,
+    var(--aip-shadow-color) 0 1px 5px 0;
+}
+
+.accordion-image-panels .accordion-image-panels-gallery-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.accordion-image-panels .accordion-image-panels-gallery-track:focus-visible {
+  outline: 2px solid var(--brand-navy-hover);
+  outline-offset: -2px;
+}
+
+.accordion-image-panels .accordion-image-panels-gallery-track picture {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+.accordion-image-panels .accordion-image-panels-gallery-track img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* prev / next arrows (white chevrons, vertically centered) */
+.accordion-image-panels .accordion-image-panels-gallery-prev,
+.accordion-image-panels .accordion-image-panels-gallery-next {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 27px;
+  height: 44px;
+  margin: -22px 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.accordion-image-panels .accordion-image-panels-gallery-prev {
+  left: 10px;
+}
+
+.accordion-image-panels .accordion-image-panels-gallery-next {
+  right: 10px;
+}
+
+.accordion-image-panels .accordion-image-panels-gallery-prev::after,
+.accordion-image-panels .accordion-image-panels-gallery-next::after {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 16px;
+  background-color: var(--background-color);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 82 160'%3E%3Cpath d='M9 9l64 71-64 71' fill='none' stroke='%23000' stroke-width='14' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.accordion-image-panels .accordion-image-panels-gallery-prev::after {
+  transform: scaleX(-1);
+}
+
+.accordion-image-panels .accordion-image-panels-gallery-prev[aria-disabled='true'],
+.accordion-image-panels .accordion-image-panels-gallery-next[aria-disabled='true'] {
+  opacity: 0.35;
+  cursor: auto;
+}
+
+.accordion-image-panels .accordion-image-panels-gallery-prev:focus-visible,
+.accordion-image-panels .accordion-image-panels-gallery-next:focus-visible,
+.accordion-image-panels .accordion-image-panels-gallery-dot:focus-visible {
+  outline: 2px solid var(--background-color);
+  outline-offset: 2px;
+}
+
+/* pagination dots, centered 10px above the bottom edge */
+.accordion-image-panels .accordion-image-panels-gallery-dots {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  height: 22.4px;
+  padding-top: 8px;
+}
+
+.accordion-image-panels .accordion-image-panels-gallery-dot {
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+  padding: 0;
+  border: 0;
+  border-radius: 100%;
+  background-color: var(--background-color);
+  cursor: pointer;
+}
+
+.accordion-image-panels .accordion-image-panels-gallery-dot.is-active {
+  background-color: var(--brand-orange);
+}
+
+.accordion-image-panels .accordion-image-panels-footer {
+  margin-top: 16px;
+  padding: 16px 0;
+  border-top: 1px solid var(--aip-divider);
+}
+
+/* ---------- desktop: horizontal accordion ---------- */
+@media (width >= 900px) {
+  .accordion-image-panels .accordion-image-panels-list {
+    flex-direction: row;
+  }
+
+  .accordion-image-panels .accordion-image-panels-item {
+    display: flex;
+    flex: 1 0 0;
+    min-width: 0;
+    border: 1px solid var(--background-color);
+    overflow: hidden;
+    transition: flex-grow 0.45s ease-in-out, flex-basis 0.45s ease-in-out;
+  }
+
+  .accordion-image-panels .accordion-image-panels-item.is-open {
+    flex: 0 0 80%;
+  }
+
+  .accordion-image-panels .accordion-image-panels-teaser {
+    flex: 1 1 0;
+    min-width: 0;
+    height: var(--aip-panel-height);
+    min-height: 0;
+  }
+
+  .accordion-image-panels .accordion-image-panels-head {
+    padding: 40px 0 0;
+  }
+
+  .accordion-image-panels .accordion-image-panels-head .accordion-image-panels-title {
+    min-height: 55px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .accordion-image-panels .accordion-image-panels-head > p {
+    margin-top: 0;
+  }
+
+  .accordion-image-panels .accordion-image-panels-box {
+    padding: 16px 0 24px;
+  }
+
+  .accordion-image-panels .accordion-image-panels-box > h3 {
+    display: block;
+  }
+
+  .accordion-image-panels .accordion-image-panels-box > p:not(:has(a)) {
+    display: block;
+    min-height: 32px;
+  }
+
+  .accordion-image-panels .accordion-image-panels-box > p:has(a) {
+    margin-top: 8px;
+  }
+
+  .accordion-image-panels .accordion-image-panels-bg img {
+    object-position: 50% 0;
+  }
+
+  .accordion-image-panels .accordion-image-panels-toggle::after {
+    display: none;
+  }
+
+  /* open panel: teaser keeps only its title, detail fills ~80% beside it */
+  .accordion-image-panels .accordion-image-panels-item.is-open .accordion-image-panels-box,
+  .accordion-image-panels .accordion-image-panels-item.is-open .accordion-image-panels-head > p {
+    display: none;
+  }
+
+  .accordion-image-panels .accordion-image-panels-detail {
+    flex: 0 0 80%;
+    box-sizing: border-box;
+    height: var(--aip-panel-height);
+    overflow-y: auto;
+  }
+
+  /* lists beside the gallery: 40% / 60% */
+  .accordion-image-panels .accordion-image-panels-detail.has-gallery:not([hidden]) {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    column-gap: 24px;
+  }
+
+  .accordion-image-panels .accordion-image-panels-detail.has-gallery .accordion-image-panels-intro,
+  .accordion-image-panels .accordion-image-panels-detail.has-gallery .accordion-image-panels-footer {
+    grid-column: 1 / -1;
+  }
+
+  /* grouped lists flow into two columns */
+  .accordion-image-panels .has-groups .accordion-image-panels-body {
+    columns: 2;
+    column-gap: 24px;
+  }
+
+  .accordion-image-panels .accordion-image-panels-group {
+    break-inside: avoid;
+  }
+
+  /* collapsed panels (another panel is open): narrow strip with vertical title */
+  .accordion-image-panels .accordion-image-panels-list:has(.is-open) .accordion-image-panels-item:not(.is-open) .accordion-image-panels-box,
+  .accordion-image-panels .accordion-image-panels-list:has(.is-open) .accordion-image-panels-item:not(.is-open) .accordion-image-panels-head > p {
+    display: none;
+  }
+
+  .accordion-image-panels .accordion-image-panels-list:has(.is-open) .accordion-image-panels-item:not(.is-open) .accordion-image-panels-head {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0 0 53px;
+    background-color: var(--aip-collapsed-bg);
+  }
+
+  .accordion-image-panels .accordion-image-panels-list:has(.is-open) .accordion-image-panels-item:not(.is-open) .accordion-image-panels-title {
+    min-height: 0;
+    font-size: 14px;
+    line-height: 16.8px;
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+}

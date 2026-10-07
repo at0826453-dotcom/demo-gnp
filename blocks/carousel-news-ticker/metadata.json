@@ -1,0 +1,22 @@
+{
+  "variantName": "carousel-news-ticker",
+  "baseBlock": "carousel",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "purpose": "news-ticker",
+    "imagePattern": "noimg",
+    "structure": "label link + rotating single-line headline links + prev/pause/next controls"
+  },
+  "contentPattern": {
+    "rows": "first row: label link 'Noticias GNP' (/noticias); each subsequent row: one news headline link (single cell, text only)"
+  },
+  "usage": {
+    "pagesUsing": ["https://www.gnp.com.mx"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-07"
+  },
+  "options": [],
+  "memberVariantIds": ["carousel-news-ticker"]
+}

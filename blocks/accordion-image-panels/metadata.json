@@ -1,0 +1,24 @@
+{
+  "variantName": "accordion-image-panels",
+  "baseBlock": "accordion",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "full-bleed",
+    "purpose": "product-category-navigation",
+    "imagePattern": "background-image-per-item",
+    "structure": "5 horizontal image panels + title + translucent text box + CTA + expandable detail overlay with link lists"
+  },
+  "contentPattern": {
+    "rows": "one row per panel (5 rows)",
+    "cell1": "Teaser: background image, category title (h2) or title image, optional top CTA link ('Cotiza tu seguro'), subtitle (h3), lead paragraph, primary CTA link",
+    "cell2": "Detail (optional, empty for panel 5): h2 intro + paragraph, optional h3 group headings, bulleted list of product links (link text followed by tooltip description in the same list item), optional slider images, footer CTA link"
+  },
+  "usage": {
+    "pagesUsing": ["https://www.gnp.com.mx"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-07"
+  },
+  "options": [],
+  "memberVariantIds": ["accordion-image-panels"]
+}

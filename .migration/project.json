@@ -1,0 +1,11 @@
+{
+  "type": "da",
+  "sites": {
+    "demo-gnp": {
+      "previewOrg": "at0826453-dotcom",
+      "previewSite": "demo-gnp",
+      "contentHostUrl": "https://content.da.live/at0826453-dotcom/demo-gnp/",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
+    }
+  }
+}

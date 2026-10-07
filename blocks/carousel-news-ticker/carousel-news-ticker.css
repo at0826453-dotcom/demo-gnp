@@ -1,0 +1,173 @@
+/* Carousel News Ticker
+ * Values extracted from source .gnpnoticias / .gnp-news computed styles.
+ * Mobile: label + headline on one line, controls centered on a second line.
+ * Desktop: single line, controls pushed right.
+ */
+
+.carousel-news-ticker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  margin: 0 8.333%;
+  padding: 10px 0;
+  color: var(--brand-gray);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* label link with vertical divider */
+.carousel-news-ticker .carousel-news-ticker-label {
+  flex: 0 0 auto;
+  margin-right: 20px;
+  white-space: nowrap;
+}
+
+.carousel-news-ticker .carousel-news-ticker-label a:any-link {
+  position: relative;
+  z-index: 5;
+  display: block;
+  color: var(--brand-green);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.carousel-news-ticker .carousel-news-ticker-label a:hover {
+  color: var(--brand-green);
+}
+
+.carousel-news-ticker .carousel-news-ticker-label a::before {
+  content: '';
+  position: absolute;
+  right: -5%;
+  bottom: 0;
+  width: 0.0875rem;
+  height: 100%;
+  background-color: var(--brand-green);
+}
+
+/* rotating headline area */
+.carousel-news-ticker .carousel-news-ticker-viewport {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.carousel-news-ticker .carousel-news-ticker-slides {
+  display: grid;
+  max-width: 54rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* all slides stack in one cell; only the active one is visible */
+.carousel-news-ticker .carousel-news-ticker-slide {
+  grid-area: 1 / 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.carousel-news-ticker .carousel-news-ticker-slide.is-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.carousel-news-ticker .carousel-news-ticker-slide a:any-link {
+  position: relative;
+  display: block;
+  margin-top: 4px;
+  padding: 0 20px;
+  color: var(--brand-gray);
+  font-size: 10px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.carousel-news-ticker .carousel-news-ticker-slide a:hover {
+  color: var(--brand-gray);
+  text-decoration: underline;
+}
+
+/* warning icon before each headline */
+.carousel-news-ticker .carousel-news-ticker-slide a::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: url('/icons/news-alert.jpg') 50% 50% / cover no-repeat;
+}
+
+/* prev / pause / next controls */
+.carousel-news-ticker .carousel-news-ticker-controls {
+  display: flex;
+  flex: 0 0 100%;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+/* 22 x 24.4px button (1px 6px padding + 22.4px line box), 10px icon bottom-aligned */
+.carousel-news-ticker .carousel-news-ticker-controls button {
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+  width: 22px;
+  height: 24.4px;
+  margin: 0;
+  padding: 1px 6px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.carousel-news-ticker .carousel-news-ticker-controls button::after {
+  content: '';
+  flex: 0 0 10px;
+  width: 10px;
+  height: 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.carousel-news-ticker .carousel-news-ticker-prev::after {
+  background-image: url('/icons/news-previous.svg');
+}
+
+.carousel-news-ticker .carousel-news-ticker-pause::after {
+  background-image: url('/icons/news-pause.svg');
+}
+
+.carousel-news-ticker.is-paused .carousel-news-ticker-pause::after {
+  background-image: url('/icons/news-start.svg');
+}
+
+.carousel-news-ticker .carousel-news-ticker-next::after {
+  background-image: url('/icons/news-next.svg');
+}
+
+@media (width >= 900px) {
+  .carousel-news-ticker {
+    flex-wrap: nowrap;
+  }
+
+  .carousel-news-ticker .carousel-news-ticker-slide a:any-link {
+    font-size: 12px;
+  }
+
+  .carousel-news-ticker .carousel-news-ticker-controls {
+    flex: 0 0 auto;
+    margin: 0 0 4px auto;
+  }
+}
