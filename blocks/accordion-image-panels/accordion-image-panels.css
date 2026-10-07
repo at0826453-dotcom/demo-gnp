@@ -490,6 +490,13 @@
 
 /* ---------- desktop: horizontal accordion ---------- */
 @media (width >= 900px) {
+  /* fluid 10/12 column like the source grid (no max width) */
+  main > .section > .accordion-image-panels-wrapper {
+    width: 83.333%;
+    max-width: none;
+    padding: 0;
+  }
+
   .accordion-image-panels .accordion-image-panels-list {
     flex-direction: row;
   }
