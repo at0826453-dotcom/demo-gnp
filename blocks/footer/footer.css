@@ -95,6 +95,7 @@ footer .footer-secondary li:not(:last-child)::after {
   width: 2px;
   height: 18px;
   background-color: #848484;
+  opacity: 0.5;
 }
 
 footer .footer-secondary a:any-link {
@@ -200,7 +201,7 @@ footer .footer-legal p {
     right: 0;
     width: 2px;
     height: 34.5px;
-    background-image: linear-gradient(rgb(199 199 199 / 50%) 0, #c9c9c9 6%, #ccc 14%, #fff 28%, #fff 73%, #d3d3d3 86%, rgb(211 211 211 / 50%));
+    background-image: linear-gradient(rgb(199 199 199 / 50%) 0, #c9c9c9 6%, #ccc 14%, #fff 28%, #fff 73%, #d3d3d3 86%, rgb(204 204 204 / 93%) 88%, rgb(199 199 199 / 50%));
     opacity: 0.5;
   }
 
