@@ -1,20 +1,211 @@
+/* GNP footer - values extracted from https://www.gnp.com.mx */
+
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  background-color: var(--brand-beige);
+  color: var(--brand-gray);
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  line-height: 22.4px;
 }
 
-footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+footer .footer-canvas {
+  width: 100%;
+  margin: 0 auto;
 }
 
-footer .footer p {
+footer .footer-canvas p {
   margin: 0;
 }
 
+footer .footer-canvas ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+footer .footer-canvas a:any-link {
+  text-decoration: none;
+}
+
+/* primary: blue icon navigation */
+footer .footer-primary ul {
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(#073784 0, #072350);
+}
+
+footer .footer-primary li {
+  position: relative;
+  padding: 6px 0;
+  font-weight: 600;
+  line-height: 19.6px;
+  transition: 0.3s ease-in-out;
+}
+
+footer .footer-primary li:hover {
+  background-color: #002c76;
+}
+
+footer .footer-primary a:any-link {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 8px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16.8px;
+  transition: 0.2s;
+}
+
+footer .footer-primary img {
+  display: block;
+  width: 34px;
+  height: 34px;
+  margin-right: 6px;
+}
+
+/* secondary: legal links with separators */
+footer .footer-secondary {
+  margin-top: 8px;
+}
+
+footer .footer-secondary ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+footer .footer-secondary li {
+  position: relative;
+  padding: 6px 0;
+  font-weight: 600;
+  line-height: 19.6px;
+}
+
+footer .footer-secondary li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 9px;
+  right: 0;
+  width: 2px;
+  height: 18px;
+  background-color: #848484;
+}
+
+footer .footer-secondary a:any-link {
+  padding: 0 8px;
+  color: #5e5d5d;
+  font-size: 12px;
+  line-height: 16.8px;
+  transition: 0.2s;
+}
+
+footer .footer-secondary a:hover {
+  color: #5e5d5d;
+  text-decoration: underline;
+}
+
+/* row: badges | contact | social */
+footer .footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 0;
+  margin-top: 8px;
+}
+
+footer .footer-badges p {
+  display: flex;
+  align-items: center;
+}
+
+footer .footer-badges img {
+  display: block;
+  width: auto;
+  max-width: 35px;
+  height: 26px;
+  margin-right: 12px;
+  object-fit: contain;
+}
+
+footer .footer-badges img:first-child {
+  max-width: none;
+  margin-right: 8px;
+}
+
+footer .footer-contact a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer .footer-contact img {
+  display: block;
+  width: 286px;
+  height: 28px;
+}
+
+footer .footer-social ul {
+  display: flex;
+  align-items: center;
+}
+
+footer .footer-social a {
+  display: flex;
+  margin-left: 8px;
+  transition: 0.2s;
+}
+
+footer .footer-social img {
+  display: block;
+  width: auto;
+  max-width: 26px;
+  height: 26px;
+}
+
+/* legal: copyright */
+footer .footer-legal p {
+  padding: 10px 0;
+  font-size: 10px;
+  line-height: 16px;
+}
+
 @media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+  footer .footer-canvas {
+    width: 83.333%;
+    max-width: 1440px;
+  }
+
+  footer .footer-primary ul {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  footer .footer-primary li {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  footer .footer-primary li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: 0;
+    width: 2px;
+    height: 34.5px;
+    background-image: linear-gradient(rgb(199 199 199 / 50%) 0, #c9c9c9 6%, #ccc 14%, #fff 28%, #fff 73%, #d3d3d3 86%, rgb(211 211 211 / 50%));
+    opacity: 0.5;
+  }
+
+  footer .footer-row {
+    flex-wrap: nowrap;
+    height: 28px;
   }
 }
