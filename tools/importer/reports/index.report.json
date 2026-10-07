@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.gnp.com.mx",
+  "path": "index",
+  "timestamp": "2026-10-07T12:06:15.781Z",
+  "title": "GNP Seguros | Sitio oficial | Vivir es increíble",
+  "template": "home",
+  "blocks": [
+    "accordion-image-panels",
+    "carousel-news-ticker"
+  ]
+}

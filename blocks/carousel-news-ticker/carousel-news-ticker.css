@@ -158,8 +158,18 @@
 }
 
 @media (width >= 900px) {
+  /* fluid 10/12 column like the source grid (no max width) */
+  main > .section > .carousel-news-ticker-wrapper {
+    width: 83.333%;
+    max-width: none;
+    padding: 0;
+  }
+
   .carousel-news-ticker {
     flex-wrap: nowrap;
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 83.333%;
   }
 
   .carousel-news-ticker .carousel-news-ticker-slide a:any-link {

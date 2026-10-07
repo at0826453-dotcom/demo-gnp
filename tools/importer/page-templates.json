@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "home",
+      "urls": [
+        "https://www.gnp.com.mx"
+      ],
+      "representativeUrl": "https://www.gnp.com.mx",
+      "description": "GNP homepage: product-category image panels (accordion) and rotating news ticker",
+      "blocks": [
+        {
+          "name": "accordion-image-panels",
+          "instances": [
+            ".gnppersianasaccordion"
+          ]
+        },
+        {
+          "name": "carousel-news-ticker",
+          "instances": [
+            ".gnpnoticias"
+          ]
+        }
+      ],
+      "urlPattern": "/",
+      "sections": [
+        {
+          "id": "rc2",
+          "name": "main-content",
+          "selector": [
+            ".responsivegrid.aem-GridColumn--default--10.aem-GridColumn--offset--default--1"
+          ],
+          "style": null,
+          "blocks": [
+            "accordion-image-panels",
+            "carousel-news-ticker"
+          ],
+          "defaultContent": []
+        }
+      ]
+    }
+  ]
+}

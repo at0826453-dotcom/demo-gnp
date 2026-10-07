@@ -1,0 +1,33 @@
+/* GNP brand tokens - extracted from https://www.gnp.com.mx */
+:root {
+  /* palette */
+  --brand-navy: #002e71;
+  --brand-navy-hover: #1d50a4;
+  --brand-navy-hover-text: #dae5f8;
+  --brand-orange: #fc6c25;
+  --brand-orange-hover: #fe8622;
+  --brand-green: #4f7524;
+  --brand-beige: #edece6;
+  --brand-gray: #4b4b4b;
+
+  /* fonts */
+  --heading-font-family: "Open Sans", open-sans-fallback, sans-serif;
+  --body-font-family: "Open Sans", open-sans-fallback, sans-serif;
+
+  /* colors */
+  --background-color: #fff;
+  --text-color: var(--brand-gray);
+  --heading-color: var(--brand-navy);
+  --link-color: var(--brand-orange);
+  --link-hover-color: var(--brand-orange-hover);
+
+  /* spacing */
+  --content-max-width: 1200px;
+  --nav-height: 69px;
+
+  /* buttons */
+  --button-radius: 4px;
+  --button-font-size: 12px;
+  --button-letter-spacing: 0.06em;
+  --button-transition: background-color 0.8s ease-in-out, border-color 0.8s ease-in-out, color 0.8s ease-in-out;
+}
