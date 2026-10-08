@@ -116,15 +116,15 @@
   margin: 10px 0;
 }
 
-/* 22 x 24.4px button (1px 6px padding + 22.4px line box), 10px icon bottom-aligned */
+/* 24px-wide hit area (min touch target); 10px icon bottom-aligned */
 .carousel-news-ticker .carousel-news-ticker-controls button {
   box-sizing: border-box;
   display: flex;
   align-items: flex-end;
-  width: 22px;
+  width: 24px;
   height: 24.4px;
   margin: 0;
-  padding: 1px 6px;
+  padding: 1px 7px;
   border: 0;
   background: transparent;
   color: inherit;

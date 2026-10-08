@@ -58,14 +58,17 @@ header .nav-list {
 
 header .nav-item {
   position: relative;
-  padding: 10px 0;
+  padding: 8px 0;
   font-weight: 600;
   line-height: 19.6px;
   text-transform: uppercase;
 }
 
+/* 24px line box keeps the touch target at the 24px minimum (tab height unchanged) */
 header .nav-item > a:any-link {
+  display: inline-block;
   padding: 0 15px;
+  line-height: 24px;
   color: #5e5d5d;
   transition: 0.2s;
 }

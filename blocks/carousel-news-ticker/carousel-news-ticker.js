@@ -52,21 +52,22 @@ export default function decorate(block) {
 
   const viewport = document.createElement('div');
   viewport.className = 'carousel-news-ticker-viewport';
-  const slides = document.createElement('ul');
+  // slides are role=group, which list items may not carry, so use plain divs
+  const slides = document.createElement('div');
   slides.className = 'carousel-news-ticker-slides';
   slides.id = `${id}-slides`;
   slides.setAttribute('aria-live', 'off');
 
   headlineRows.forEach((row, idx) => {
-    const li = document.createElement('li');
-    li.className = 'carousel-news-ticker-slide';
-    li.setAttribute('role', 'group');
-    li.setAttribute('aria-roledescription', 'slide');
-    li.setAttribute('aria-label', `${idx + 1} / ${headlineRows.length}`);
+    const slide = document.createElement('div');
+    slide.className = 'carousel-news-ticker-slide';
+    slide.setAttribute('role', 'group');
+    slide.setAttribute('aria-roledescription', 'slide');
+    slide.setAttribute('aria-label', `${idx + 1} / ${headlineRows.length}`);
     const content = cellContent(row);
     content.querySelectorAll('a').forEach((a) => a.classList.remove('button'));
-    li.append(...content.childNodes);
-    slides.append(li);
+    slide.append(...content.childNodes);
+    slides.append(slide);
   });
   viewport.append(slides);
   fragment.append(viewport);
